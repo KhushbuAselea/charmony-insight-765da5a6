@@ -16,6 +16,7 @@ import { Route as AdminDashboardRouteImport } from './routes/_admin.dashboard'
 import { Route as AdminCustomersIndexRouteImport } from './routes/_admin.customers.index'
 import { Route as AdminCustomersCustomerIdRouteImport } from './routes/_admin.customers.$customerId'
 import { Route as AdminEnquiriesIndexRouteImport } from './routes/_admin.enquiries.index'
+import { Route as AdminEnquiriesEnquiryIdRouteImport } from './routes/_admin.enquiries.$enquiryId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,12 +53,18 @@ const AdminEnquiriesIndexRoute = AdminEnquiriesIndexRouteImport.update({
   path: '/enquiries/',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminEnquiriesEnquiryIdRoute = AdminEnquiriesEnquiryIdRouteImport.update({
+  id: '/enquiries/$enquiryId',
+  path: '/enquiries/$enquiryId',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/dashboard': typeof AdminDashboardRoute
   '/customers/$customerId': typeof AdminCustomersCustomerIdRoute
+  '/enquiries/$enquiryId': typeof AdminEnquiriesEnquiryIdRoute
   '/customers/': typeof AdminCustomersIndexRoute
   '/enquiries/': typeof AdminEnquiriesIndexRoute
 }
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/dashboard': typeof AdminDashboardRoute
   '/customers/$customerId': typeof AdminCustomersCustomerIdRoute
+  '/enquiries/$enquiryId': typeof AdminEnquiriesEnquiryIdRoute
   '/customers': typeof AdminCustomersIndexRoute
   '/enquiries': typeof AdminEnquiriesIndexRoute
 }
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/_admin/dashboard': typeof AdminDashboardRoute
   '/_admin/customers/$customerId': typeof AdminCustomersCustomerIdRoute
+  '/_admin/enquiries/$enquiryId': typeof AdminEnquiriesEnquiryIdRoute
   '/_admin/customers/': typeof AdminCustomersIndexRoute
   '/_admin/enquiries/': typeof AdminEnquiriesIndexRoute
 }
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/dashboard'
     | '/customers/$customerId'
+    | '/enquiries/$enquiryId'
     | '/customers/'
     | '/enquiries/'
   fileRoutesByTo: FileRoutesByTo
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/dashboard'
     | '/customers/$customerId'
+    | '/enquiries/$enquiryId'
     | '/customers'
     | '/enquiries'
   id:
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/_admin/dashboard'
     | '/_admin/customers/$customerId'
+    | '/_admin/enquiries/$enquiryId'
     | '/_admin/customers/'
     | '/_admin/enquiries/'
   fileRoutesById: FileRoutesById
@@ -164,12 +176,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminEnquiriesIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/_admin/enquiries/$enquiryId': {
+      id: '/_admin/enquiries/$enquiryId'
+      path: '/enquiries/$enquiryId'
+      fullPath: '/enquiries/$enquiryId'
+      preLoaderRoute: typeof AdminEnquiriesEnquiryIdRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
 interface AdminRouteChildren {
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminCustomersCustomerIdRoute: typeof AdminCustomersCustomerIdRoute
+  AdminEnquiriesEnquiryIdRoute: typeof AdminEnquiriesEnquiryIdRoute
   AdminCustomersIndexRoute: typeof AdminCustomersIndexRoute
   AdminEnquiriesIndexRoute: typeof AdminEnquiriesIndexRoute
 }
@@ -177,6 +197,7 @@ interface AdminRouteChildren {
 const AdminRouteChildren: AdminRouteChildren = {
   AdminDashboardRoute: AdminDashboardRoute,
   AdminCustomersCustomerIdRoute: AdminCustomersCustomerIdRoute,
+  AdminEnquiriesEnquiryIdRoute: AdminEnquiriesEnquiryIdRoute,
   AdminCustomersIndexRoute: AdminCustomersIndexRoute,
   AdminEnquiriesIndexRoute: AdminEnquiriesIndexRoute,
 }
