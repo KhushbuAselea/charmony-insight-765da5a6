@@ -14,6 +14,7 @@ import { Route as AdminRouteImport } from './routes/_admin'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AdminDashboardRouteImport } from './routes/_admin.dashboard'
 import { Route as AdminDesignsRouteImport } from './routes/_admin.designs'
+import { Route as AdminLeadTrackingRouteImport } from './routes/_admin.lead-tracking'
 import { Route as AdminQuotationsRouteImport } from './routes/_admin.quotations'
 import { Route as AdminScansRouteImport } from './routes/_admin.scans'
 import { Route as AdminTilesAccessoriesRouteImport } from './routes/_admin.tiles-accessories'
@@ -45,6 +46,11 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
 const AdminDesignsRoute = AdminDesignsRouteImport.update({
   id: '/designs',
   path: '/designs',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLeadTrackingRoute = AdminLeadTrackingRouteImport.update({
+  id: '/lead-tracking',
+  path: '/lead-tracking',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminQuotationsRoute = AdminQuotationsRouteImport.update({
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/dashboard': typeof AdminDashboardRoute
   '/designs': typeof AdminDesignsRoute
+  '/lead-tracking': typeof AdminLeadTrackingRoute
   '/quotations': typeof AdminQuotationsRoute
   '/scans': typeof AdminScansRoute
   '/tiles-accessories': typeof AdminTilesAccessoriesRoute
@@ -108,6 +115,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/dashboard': typeof AdminDashboardRoute
   '/designs': typeof AdminDesignsRoute
+  '/lead-tracking': typeof AdminLeadTrackingRoute
   '/quotations': typeof AdminQuotationsRoute
   '/scans': typeof AdminScansRoute
   '/tiles-accessories': typeof AdminTilesAccessoriesRoute
@@ -124,6 +132,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/_admin/dashboard': typeof AdminDashboardRoute
   '/_admin/designs': typeof AdminDesignsRoute
+  '/_admin/lead-tracking': typeof AdminLeadTrackingRoute
   '/_admin/quotations': typeof AdminQuotationsRoute
   '/_admin/scans': typeof AdminScansRoute
   '/_admin/tiles-accessories': typeof AdminTilesAccessoriesRoute
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/dashboard'
     | '/designs'
+    | '/lead-tracking'
     | '/quotations'
     | '/scans'
     | '/tiles-accessories'
@@ -154,6 +164,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/dashboard'
     | '/designs'
+    | '/lead-tracking'
     | '/quotations'
     | '/scans'
     | '/tiles-accessories'
@@ -169,6 +180,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/_admin/dashboard'
     | '/_admin/designs'
+    | '/_admin/lead-tracking'
     | '/_admin/quotations'
     | '/_admin/scans'
     | '/_admin/tiles-accessories'
@@ -220,6 +232,13 @@ declare module '@tanstack/react-router' {
       path: '/designs'
       fullPath: '/designs'
       preLoaderRoute: typeof AdminDesignsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/lead-tracking': {
+      id: '/_admin/lead-tracking'
+      path: '/lead-tracking'
+      fullPath: '/lead-tracking'
+      preLoaderRoute: typeof AdminLeadTrackingRouteImport
       parentRoute: typeof AdminRoute
     }
     '/_admin/quotations': {
@@ -284,6 +303,7 @@ declare module '@tanstack/react-router' {
 interface AdminRouteChildren {
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminDesignsRoute: typeof AdminDesignsRoute
+  AdminLeadTrackingRoute: typeof AdminLeadTrackingRoute
   AdminQuotationsRoute: typeof AdminQuotationsRoute
   AdminScansRoute: typeof AdminScansRoute
   AdminTilesAccessoriesRoute: typeof AdminTilesAccessoriesRoute
@@ -297,6 +317,7 @@ interface AdminRouteChildren {
 const AdminRouteChildren: AdminRouteChildren = {
   AdminDashboardRoute: AdminDashboardRoute,
   AdminDesignsRoute: AdminDesignsRoute,
+  AdminLeadTrackingRoute: AdminLeadTrackingRoute,
   AdminQuotationsRoute: AdminQuotationsRoute,
   AdminScansRoute: AdminScansRoute,
   AdminTilesAccessoriesRoute: AdminTilesAccessoriesRoute,
