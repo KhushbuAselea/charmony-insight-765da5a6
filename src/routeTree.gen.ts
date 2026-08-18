@@ -15,6 +15,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as AdminDashboardRouteImport } from './routes/_admin.dashboard'
 import { Route as AdminDesignsRouteImport } from './routes/_admin.designs'
 import { Route as AdminScansRouteImport } from './routes/_admin.scans'
+import { Route as AdminWetWallPanelsRouteImport } from './routes/_admin.wet-wall-panels'
 import { Route as AdminCustomersIndexRouteImport } from './routes/_admin.customers.index'
 import { Route as AdminCustomersCustomerIdRouteImport } from './routes/_admin.customers.$customerId'
 import { Route as AdminEnquiriesIndexRouteImport } from './routes/_admin.enquiries.index'
@@ -49,6 +50,11 @@ const AdminScansRoute = AdminScansRouteImport.update({
   path: '/scans',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminWetWallPanelsRoute = AdminWetWallPanelsRouteImport.update({
+  id: '/wet-wall-panels',
+  path: '/wet-wall-panels',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminCustomersIndexRoute = AdminCustomersIndexRouteImport.update({
   id: '/customers/',
   path: '/customers/',
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof AdminDashboardRoute
   '/designs': typeof AdminDesignsRoute
   '/scans': typeof AdminScansRoute
+  '/wet-wall-panels': typeof AdminWetWallPanelsRoute
   '/customers/$customerId': typeof AdminCustomersCustomerIdRoute
   '/enquiries/$enquiryId': typeof AdminEnquiriesEnquiryIdRoute
   '/customers/': typeof AdminCustomersIndexRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof AdminDashboardRoute
   '/designs': typeof AdminDesignsRoute
   '/scans': typeof AdminScansRoute
+  '/wet-wall-panels': typeof AdminWetWallPanelsRoute
   '/customers/$customerId': typeof AdminCustomersCustomerIdRoute
   '/enquiries/$enquiryId': typeof AdminEnquiriesEnquiryIdRoute
   '/customers': typeof AdminCustomersIndexRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/_admin/dashboard': typeof AdminDashboardRoute
   '/_admin/designs': typeof AdminDesignsRoute
   '/_admin/scans': typeof AdminScansRoute
+  '/_admin/wet-wall-panels': typeof AdminWetWallPanelsRoute
   '/_admin/customers/$customerId': typeof AdminCustomersCustomerIdRoute
   '/_admin/enquiries/$enquiryId': typeof AdminEnquiriesEnquiryIdRoute
   '/_admin/customers/': typeof AdminCustomersIndexRoute
@@ -114,6 +123,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/designs'
     | '/scans'
+    | '/wet-wall-panels'
     | '/customers/$customerId'
     | '/enquiries/$enquiryId'
     | '/customers/'
@@ -125,6 +135,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/designs'
     | '/scans'
+    | '/wet-wall-panels'
     | '/customers/$customerId'
     | '/enquiries/$enquiryId'
     | '/customers'
@@ -137,6 +148,7 @@ export interface FileRouteTypes {
     | '/_admin/dashboard'
     | '/_admin/designs'
     | '/_admin/scans'
+    | '/_admin/wet-wall-panels'
     | '/_admin/customers/$customerId'
     | '/_admin/enquiries/$enquiryId'
     | '/_admin/customers/'
@@ -193,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminScansRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/_admin/wet-wall-panels': {
+      id: '/_admin/wet-wall-panels'
+      path: '/wet-wall-panels'
+      fullPath: '/wet-wall-panels'
+      preLoaderRoute: typeof AdminWetWallPanelsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/_admin/customers/': {
       id: '/_admin/customers/'
       path: '/customers'
@@ -228,6 +247,7 @@ interface AdminRouteChildren {
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminDesignsRoute: typeof AdminDesignsRoute
   AdminScansRoute: typeof AdminScansRoute
+  AdminWetWallPanelsRoute: typeof AdminWetWallPanelsRoute
   AdminCustomersCustomerIdRoute: typeof AdminCustomersCustomerIdRoute
   AdminEnquiriesEnquiryIdRoute: typeof AdminEnquiriesEnquiryIdRoute
   AdminCustomersIndexRoute: typeof AdminCustomersIndexRoute
@@ -238,6 +258,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminDashboardRoute: AdminDashboardRoute,
   AdminDesignsRoute: AdminDesignsRoute,
   AdminScansRoute: AdminScansRoute,
+  AdminWetWallPanelsRoute: AdminWetWallPanelsRoute,
   AdminCustomersCustomerIdRoute: AdminCustomersCustomerIdRoute,
   AdminEnquiriesEnquiryIdRoute: AdminEnquiriesEnquiryIdRoute,
   AdminCustomersIndexRoute: AdminCustomersIndexRoute,
