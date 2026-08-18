@@ -17,6 +17,7 @@ import { Route as AdminDesignsRouteImport } from './routes/_admin.designs'
 import { Route as AdminLeadTrackingRouteImport } from './routes/_admin.lead-tracking'
 import { Route as AdminQuotationsRouteImport } from './routes/_admin.quotations'
 import { Route as AdminScansRouteImport } from './routes/_admin.scans'
+import { Route as AdminSettingsRouteImport } from './routes/_admin.settings'
 import { Route as AdminTilesAccessoriesRouteImport } from './routes/_admin.tiles-accessories'
 import { Route as AdminWetWallPanelsRouteImport } from './routes/_admin.wet-wall-panels'
 import { Route as AdminCustomersIndexRouteImport } from './routes/_admin.customers.index'
@@ -63,6 +64,11 @@ const AdminScansRoute = AdminScansRouteImport.update({
   path: '/scans',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminTilesAccessoriesRoute = AdminTilesAccessoriesRouteImport.update({
   id: '/tiles-accessories',
   path: '/tiles-accessories',
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/lead-tracking': typeof AdminLeadTrackingRoute
   '/quotations': typeof AdminQuotationsRoute
   '/scans': typeof AdminScansRoute
+  '/settings': typeof AdminSettingsRoute
   '/tiles-accessories': typeof AdminTilesAccessoriesRoute
   '/wet-wall-panels': typeof AdminWetWallPanelsRoute
   '/customers/$customerId': typeof AdminCustomersCustomerIdRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/lead-tracking': typeof AdminLeadTrackingRoute
   '/quotations': typeof AdminQuotationsRoute
   '/scans': typeof AdminScansRoute
+  '/settings': typeof AdminSettingsRoute
   '/tiles-accessories': typeof AdminTilesAccessoriesRoute
   '/wet-wall-panels': typeof AdminWetWallPanelsRoute
   '/customers/$customerId': typeof AdminCustomersCustomerIdRoute
@@ -135,6 +143,7 @@ export interface FileRoutesById {
   '/_admin/lead-tracking': typeof AdminLeadTrackingRoute
   '/_admin/quotations': typeof AdminQuotationsRoute
   '/_admin/scans': typeof AdminScansRoute
+  '/_admin/settings': typeof AdminSettingsRoute
   '/_admin/tiles-accessories': typeof AdminTilesAccessoriesRoute
   '/_admin/wet-wall-panels': typeof AdminWetWallPanelsRoute
   '/_admin/customers/$customerId': typeof AdminCustomersCustomerIdRoute
@@ -152,6 +161,7 @@ export interface FileRouteTypes {
     | '/lead-tracking'
     | '/quotations'
     | '/scans'
+    | '/settings'
     | '/tiles-accessories'
     | '/wet-wall-panels'
     | '/customers/$customerId'
@@ -167,6 +177,7 @@ export interface FileRouteTypes {
     | '/lead-tracking'
     | '/quotations'
     | '/scans'
+    | '/settings'
     | '/tiles-accessories'
     | '/wet-wall-panels'
     | '/customers/$customerId'
@@ -183,6 +194,7 @@ export interface FileRouteTypes {
     | '/_admin/lead-tracking'
     | '/_admin/quotations'
     | '/_admin/scans'
+    | '/_admin/settings'
     | '/_admin/tiles-accessories'
     | '/_admin/wet-wall-panels'
     | '/_admin/customers/$customerId'
@@ -255,6 +267,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminScansRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/_admin/settings': {
+      id: '/_admin/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/_admin/tiles-accessories': {
       id: '/_admin/tiles-accessories'
       path: '/tiles-accessories'
@@ -306,6 +325,7 @@ interface AdminRouteChildren {
   AdminLeadTrackingRoute: typeof AdminLeadTrackingRoute
   AdminQuotationsRoute: typeof AdminQuotationsRoute
   AdminScansRoute: typeof AdminScansRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
   AdminTilesAccessoriesRoute: typeof AdminTilesAccessoriesRoute
   AdminWetWallPanelsRoute: typeof AdminWetWallPanelsRoute
   AdminCustomersCustomerIdRoute: typeof AdminCustomersCustomerIdRoute
@@ -320,6 +340,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminLeadTrackingRoute: AdminLeadTrackingRoute,
   AdminQuotationsRoute: AdminQuotationsRoute,
   AdminScansRoute: AdminScansRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
   AdminTilesAccessoriesRoute: AdminTilesAccessoriesRoute,
   AdminWetWallPanelsRoute: AdminWetWallPanelsRoute,
   AdminCustomersCustomerIdRoute: AdminCustomersCustomerIdRoute,
