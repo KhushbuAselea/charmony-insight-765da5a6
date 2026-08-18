@@ -39,7 +39,13 @@ export function DataTable<T>({
 }: DataTableProps<T>) {
   if (loading) return <LoadingState rows={6} />;
   if (rows.length === 0)
-    return <EmptyState title={emptyTitle} description={emptyDescription} />;
+    return (
+      <EmptyState
+        title={emptyTitle ?? "Nothing here yet"}
+        {...(emptyDescription ? { description: emptyDescription } : {})}
+      />
+    );
+
 
   return (
     <div className="overflow-x-auto">
