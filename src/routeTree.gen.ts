@@ -14,6 +14,7 @@ import { Route as AdminRouteImport } from './routes/_admin'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AdminDashboardRouteImport } from './routes/_admin.dashboard'
 import { Route as AdminDesignsRouteImport } from './routes/_admin.designs'
+import { Route as AdminQuotationsRouteImport } from './routes/_admin.quotations'
 import { Route as AdminScansRouteImport } from './routes/_admin.scans'
 import { Route as AdminTilesAccessoriesRouteImport } from './routes/_admin.tiles-accessories'
 import { Route as AdminWetWallPanelsRouteImport } from './routes/_admin.wet-wall-panels'
@@ -44,6 +45,11 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
 const AdminDesignsRoute = AdminDesignsRouteImport.update({
   id: '/designs',
   path: '/designs',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminQuotationsRoute = AdminQuotationsRouteImport.update({
+  id: '/quotations',
+  path: '/quotations',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminScansRoute = AdminScansRouteImport.update({
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/dashboard': typeof AdminDashboardRoute
   '/designs': typeof AdminDesignsRoute
+  '/quotations': typeof AdminQuotationsRoute
   '/scans': typeof AdminScansRoute
   '/tiles-accessories': typeof AdminTilesAccessoriesRoute
   '/wet-wall-panels': typeof AdminWetWallPanelsRoute
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/dashboard': typeof AdminDashboardRoute
   '/designs': typeof AdminDesignsRoute
+  '/quotations': typeof AdminQuotationsRoute
   '/scans': typeof AdminScansRoute
   '/tiles-accessories': typeof AdminTilesAccessoriesRoute
   '/wet-wall-panels': typeof AdminWetWallPanelsRoute
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/_admin/dashboard': typeof AdminDashboardRoute
   '/_admin/designs': typeof AdminDesignsRoute
+  '/_admin/quotations': typeof AdminQuotationsRoute
   '/_admin/scans': typeof AdminScansRoute
   '/_admin/tiles-accessories': typeof AdminTilesAccessoriesRoute
   '/_admin/wet-wall-panels': typeof AdminWetWallPanelsRoute
@@ -131,6 +140,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/dashboard'
     | '/designs'
+    | '/quotations'
     | '/scans'
     | '/tiles-accessories'
     | '/wet-wall-panels'
@@ -144,6 +154,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/dashboard'
     | '/designs'
+    | '/quotations'
     | '/scans'
     | '/tiles-accessories'
     | '/wet-wall-panels'
@@ -158,6 +169,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/_admin/dashboard'
     | '/_admin/designs'
+    | '/_admin/quotations'
     | '/_admin/scans'
     | '/_admin/tiles-accessories'
     | '/_admin/wet-wall-panels'
@@ -208,6 +220,13 @@ declare module '@tanstack/react-router' {
       path: '/designs'
       fullPath: '/designs'
       preLoaderRoute: typeof AdminDesignsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/quotations': {
+      id: '/_admin/quotations'
+      path: '/quotations'
+      fullPath: '/quotations'
+      preLoaderRoute: typeof AdminQuotationsRouteImport
       parentRoute: typeof AdminRoute
     }
     '/_admin/scans': {
@@ -265,6 +284,7 @@ declare module '@tanstack/react-router' {
 interface AdminRouteChildren {
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminDesignsRoute: typeof AdminDesignsRoute
+  AdminQuotationsRoute: typeof AdminQuotationsRoute
   AdminScansRoute: typeof AdminScansRoute
   AdminTilesAccessoriesRoute: typeof AdminTilesAccessoriesRoute
   AdminWetWallPanelsRoute: typeof AdminWetWallPanelsRoute
@@ -277,6 +297,7 @@ interface AdminRouteChildren {
 const AdminRouteChildren: AdminRouteChildren = {
   AdminDashboardRoute: AdminDashboardRoute,
   AdminDesignsRoute: AdminDesignsRoute,
+  AdminQuotationsRoute: AdminQuotationsRoute,
   AdminScansRoute: AdminScansRoute,
   AdminTilesAccessoriesRoute: AdminTilesAccessoriesRoute,
   AdminWetWallPanelsRoute: AdminWetWallPanelsRoute,
