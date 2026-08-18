@@ -10,33 +10,203 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/_admin'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as AdminDashboardRouteImport } from './routes/_admin.dashboard'
+import { Route as AdminDesignsRouteImport } from './routes/_admin.designs'
+import { Route as AdminLeadTrackingRouteImport } from './routes/_admin.lead-tracking'
+import { Route as AdminQuotationsRouteImport } from './routes/_admin.quotations'
+import { Route as AdminScansRouteImport } from './routes/_admin.scans'
+import { Route as AdminSettingsRouteImport } from './routes/_admin.settings'
+import { Route as AdminTilesAccessoriesRouteImport } from './routes/_admin.tiles-accessories'
+import { Route as AdminWetWallPanelsRouteImport } from './routes/_admin.wet-wall-panels'
+import { Route as AdminCustomersIndexRouteImport } from './routes/_admin.customers.index'
+import { Route as AdminCustomersCustomerIdRouteImport } from './routes/_admin.customers.$customerId'
+import { Route as AdminEnquiriesIndexRouteImport } from './routes/_admin.enquiries.index'
+import { Route as AdminEnquiriesEnquiryIdRouteImport } from './routes/_admin.enquiries.$enquiryId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/_admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDesignsRoute = AdminDesignsRouteImport.update({
+  id: '/designs',
+  path: '/designs',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLeadTrackingRoute = AdminLeadTrackingRouteImport.update({
+  id: '/lead-tracking',
+  path: '/lead-tracking',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminQuotationsRoute = AdminQuotationsRouteImport.update({
+  id: '/quotations',
+  path: '/quotations',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminScansRoute = AdminScansRouteImport.update({
+  id: '/scans',
+  path: '/scans',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTilesAccessoriesRoute = AdminTilesAccessoriesRouteImport.update({
+  id: '/tiles-accessories',
+  path: '/tiles-accessories',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminWetWallPanelsRoute = AdminWetWallPanelsRouteImport.update({
+  id: '/wet-wall-panels',
+  path: '/wet-wall-panels',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCustomersIndexRoute = AdminCustomersIndexRouteImport.update({
+  id: '/customers/',
+  path: '/customers/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCustomersCustomerIdRoute =
+  AdminCustomersCustomerIdRouteImport.update({
+    id: '/customers/$customerId',
+    path: '/customers/$customerId',
+    getParentRoute: () => AdminRoute,
+  } as any)
+const AdminEnquiriesIndexRoute = AdminEnquiriesIndexRouteImport.update({
+  id: '/enquiries/',
+  path: '/enquiries/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminEnquiriesEnquiryIdRoute = AdminEnquiriesEnquiryIdRouteImport.update({
+  id: '/enquiries/$enquiryId',
+  path: '/enquiries/$enquiryId',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/dashboard': typeof AdminDashboardRoute
+  '/designs': typeof AdminDesignsRoute
+  '/lead-tracking': typeof AdminLeadTrackingRoute
+  '/quotations': typeof AdminQuotationsRoute
+  '/scans': typeof AdminScansRoute
+  '/settings': typeof AdminSettingsRoute
+  '/tiles-accessories': typeof AdminTilesAccessoriesRoute
+  '/wet-wall-panels': typeof AdminWetWallPanelsRoute
+  '/customers/$customerId': typeof AdminCustomersCustomerIdRoute
+  '/enquiries/$enquiryId': typeof AdminEnquiriesEnquiryIdRoute
+  '/customers/': typeof AdminCustomersIndexRoute
+  '/enquiries/': typeof AdminEnquiriesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/dashboard': typeof AdminDashboardRoute
+  '/designs': typeof AdminDesignsRoute
+  '/lead-tracking': typeof AdminLeadTrackingRoute
+  '/quotations': typeof AdminQuotationsRoute
+  '/scans': typeof AdminScansRoute
+  '/settings': typeof AdminSettingsRoute
+  '/tiles-accessories': typeof AdminTilesAccessoriesRoute
+  '/wet-wall-panels': typeof AdminWetWallPanelsRoute
+  '/customers/$customerId': typeof AdminCustomersCustomerIdRoute
+  '/enquiries/$enquiryId': typeof AdminEnquiriesEnquiryIdRoute
+  '/customers': typeof AdminCustomersIndexRoute
+  '/enquiries': typeof AdminEnquiriesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_admin': typeof AdminRouteWithChildren
+  '/login': typeof LoginRoute
+  '/_admin/dashboard': typeof AdminDashboardRoute
+  '/_admin/designs': typeof AdminDesignsRoute
+  '/_admin/lead-tracking': typeof AdminLeadTrackingRoute
+  '/_admin/quotations': typeof AdminQuotationsRoute
+  '/_admin/scans': typeof AdminScansRoute
+  '/_admin/settings': typeof AdminSettingsRoute
+  '/_admin/tiles-accessories': typeof AdminTilesAccessoriesRoute
+  '/_admin/wet-wall-panels': typeof AdminWetWallPanelsRoute
+  '/_admin/customers/$customerId': typeof AdminCustomersCustomerIdRoute
+  '/_admin/enquiries/$enquiryId': typeof AdminEnquiriesEnquiryIdRoute
+  '/_admin/customers/': typeof AdminCustomersIndexRoute
+  '/_admin/enquiries/': typeof AdminEnquiriesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/dashboard'
+    | '/designs'
+    | '/lead-tracking'
+    | '/quotations'
+    | '/scans'
+    | '/settings'
+    | '/tiles-accessories'
+    | '/wet-wall-panels'
+    | '/customers/$customerId'
+    | '/enquiries/$enquiryId'
+    | '/customers/'
+    | '/enquiries/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/dashboard'
+    | '/designs'
+    | '/lead-tracking'
+    | '/quotations'
+    | '/scans'
+    | '/settings'
+    | '/tiles-accessories'
+    | '/wet-wall-panels'
+    | '/customers/$customerId'
+    | '/enquiries/$enquiryId'
+    | '/customers'
+    | '/enquiries'
+  id:
+    | '__root__'
+    | '/'
+    | '/_admin'
+    | '/login'
+    | '/_admin/dashboard'
+    | '/_admin/designs'
+    | '/_admin/lead-tracking'
+    | '/_admin/quotations'
+    | '/_admin/scans'
+    | '/_admin/settings'
+    | '/_admin/tiles-accessories'
+    | '/_admin/wet-wall-panels'
+    | '/_admin/customers/$customerId'
+    | '/_admin/enquiries/$enquiryId'
+    | '/_admin/customers/'
+    | '/_admin/enquiries/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
+  LoginRoute: typeof LoginRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +218,143 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_admin': {
+      id: '/_admin'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_admin/dashboard': {
+      id: '/_admin/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/designs': {
+      id: '/_admin/designs'
+      path: '/designs'
+      fullPath: '/designs'
+      preLoaderRoute: typeof AdminDesignsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/lead-tracking': {
+      id: '/_admin/lead-tracking'
+      path: '/lead-tracking'
+      fullPath: '/lead-tracking'
+      preLoaderRoute: typeof AdminLeadTrackingRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/quotations': {
+      id: '/_admin/quotations'
+      path: '/quotations'
+      fullPath: '/quotations'
+      preLoaderRoute: typeof AdminQuotationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/scans': {
+      id: '/_admin/scans'
+      path: '/scans'
+      fullPath: '/scans'
+      preLoaderRoute: typeof AdminScansRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/settings': {
+      id: '/_admin/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/tiles-accessories': {
+      id: '/_admin/tiles-accessories'
+      path: '/tiles-accessories'
+      fullPath: '/tiles-accessories'
+      preLoaderRoute: typeof AdminTilesAccessoriesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/wet-wall-panels': {
+      id: '/_admin/wet-wall-panels'
+      path: '/wet-wall-panels'
+      fullPath: '/wet-wall-panels'
+      preLoaderRoute: typeof AdminWetWallPanelsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/customers/': {
+      id: '/_admin/customers/'
+      path: '/customers'
+      fullPath: '/customers/'
+      preLoaderRoute: typeof AdminCustomersIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/customers/$customerId': {
+      id: '/_admin/customers/$customerId'
+      path: '/customers/$customerId'
+      fullPath: '/customers/$customerId'
+      preLoaderRoute: typeof AdminCustomersCustomerIdRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/enquiries/': {
+      id: '/_admin/enquiries/'
+      path: '/enquiries'
+      fullPath: '/enquiries/'
+      preLoaderRoute: typeof AdminEnquiriesIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/enquiries/$enquiryId': {
+      id: '/_admin/enquiries/$enquiryId'
+      path: '/enquiries/$enquiryId'
+      fullPath: '/enquiries/$enquiryId'
+      preLoaderRoute: typeof AdminEnquiriesEnquiryIdRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminDesignsRoute: typeof AdminDesignsRoute
+  AdminLeadTrackingRoute: typeof AdminLeadTrackingRoute
+  AdminQuotationsRoute: typeof AdminQuotationsRoute
+  AdminScansRoute: typeof AdminScansRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminTilesAccessoriesRoute: typeof AdminTilesAccessoriesRoute
+  AdminWetWallPanelsRoute: typeof AdminWetWallPanelsRoute
+  AdminCustomersCustomerIdRoute: typeof AdminCustomersCustomerIdRoute
+  AdminEnquiriesEnquiryIdRoute: typeof AdminEnquiriesEnquiryIdRoute
+  AdminCustomersIndexRoute: typeof AdminCustomersIndexRoute
+  AdminEnquiriesIndexRoute: typeof AdminEnquiriesIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminDashboardRoute: AdminDashboardRoute,
+  AdminDesignsRoute: AdminDesignsRoute,
+  AdminLeadTrackingRoute: AdminLeadTrackingRoute,
+  AdminQuotationsRoute: AdminQuotationsRoute,
+  AdminScansRoute: AdminScansRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminTilesAccessoriesRoute: AdminTilesAccessoriesRoute,
+  AdminWetWallPanelsRoute: AdminWetWallPanelsRoute,
+  AdminCustomersCustomerIdRoute: AdminCustomersCustomerIdRoute,
+  AdminEnquiriesEnquiryIdRoute: AdminEnquiriesEnquiryIdRoute,
+  AdminCustomersIndexRoute: AdminCustomersIndexRoute,
+  AdminEnquiriesIndexRoute: AdminEnquiriesIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
+  LoginRoute: LoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
